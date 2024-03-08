@@ -12,11 +12,11 @@ export const getAllNotes = async (req, res) => {
 
 export const createNote = async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title, description, date } = req.body;
     const newNote = new Notes(
         { title, 
         description, 
-        date: new Date() });
+        date:Date(date)});
     const note = await newNote.save();
     res.status(201).json(note);
   } catch (error) {
